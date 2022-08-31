@@ -1,13 +1,8 @@
 // import logo from './logo.svg';
-import AddNew from './components/AddNew/AddNew.jsx';
+import AddContact from './components/AddContact/AddContact.jsx';
 import {useState} from 'react';
 import './App.scss';
 import DisplayContacts from './components/DisplayContacts/DisplayContacts.jsx';
-
-
-
-
-
 
 function App() {
 
@@ -46,7 +41,7 @@ function App() {
       <header className="App-header">
         <h1>myPhoneBook</h1>
       </header>
-      <AddNew dataHandler={dataHandler}/>
+      <AddContact dataHandler={dataHandler}/>
       <DisplayContacts 
         contactList={data} 
         handleDelete={handleDelete}
