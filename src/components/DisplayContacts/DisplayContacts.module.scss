@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.contactCard {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: $clr-gray;
+	color: $clr-dark;
+	border-radius: $border-radius;
+	margin-bottom: $spacing-4;
+
+	& > p {
+		width: 45%;
+		padding: $spacing-2;
+	}
+
+	& > button {
+		height: 2rem;
+		padding: $spacing-2;
+
+		& > img {
+      height: 100%;
+		}
+	}
+}

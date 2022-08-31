@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.form{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;   
+  padding: 5px 0;
+  margin-bottom: $spacing-4;
+
+  @include cardProps;
+
+  label {
+      flex-grow: 3;
+      margin: 0 $spacing-2;
+      input{
+          width: 100%;
+      }
+  }
+  
+}
+
+.btn-group {
+    flex-grow: 2;
+
+    & > button {
+        font-weight: bold;
+    }
+}

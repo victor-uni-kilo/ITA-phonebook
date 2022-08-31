@@ -1,0 +1,18 @@
+$clr-dark: #282c34;
+$clr-light: whitesmoke;
+$clr-gray: #bfcadb;
+;
+
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+
+
+$border-radius: 6px;
+
+@mixin cardProps() {
+  background-color: $clr-dark;
+  color: $clr-light;
+  border-radius: $border-radius;
+}
