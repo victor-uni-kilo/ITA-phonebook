@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.messageCard {
+    width: 100%;
+    
+    @include cardProps;
+    
+    background-color: red;
+    margin-bottom: $spacing-4;
+}

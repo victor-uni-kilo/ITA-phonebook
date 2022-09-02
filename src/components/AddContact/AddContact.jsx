@@ -9,9 +9,11 @@ class AddContact extends Component {
       id: null,
       name: null,
       phoneNumber: null,
+      submitStatus: 'pending'
     };
   }
 
+  // VALIDATION
   validationObject = {
     hasSpecialCharacters: {
       invalid: false,
@@ -27,17 +29,18 @@ class AddContact extends Component {
     },
     numberExists: {
       invalid: false,
-      message: "This phone number is already exists."
+      message: "This phone number already exists."
     },
   };
   
-  // CONDENSE NUMBER
+  // HELPER
   formatPhoneNumber = (phoneNumber) => {
     let formattedNumber = phoneNumber.replace(/-|\//g, "");
     return formattedNumber;
   };
 
-  isValidInput = async () => {
+  // VALIDATION FUNCTION
+  validateInput = async () => {
     // REGEX 
     const allowedChars = /^(a-z|A-Z|0-9)*[^#$%^&*()']*$/g;
     const phoneNoPattern = /[a-zA-Z&_]/;
@@ -55,36 +58,41 @@ class AddContact extends Component {
     this.validationObject.numberExists.invalid = storageData && 
       !!storageData.find(obj => this.formatPhoneNumber(obj.phoneNumber) === this.formatPhoneNumber(this.state.phoneNumber));
        
-    let invalidInput = Object.keys(this.validationObject).some((key) => {
+    let validInput = !Object.keys(this.validationObject).some((key) => {
       return this.validationObject[key].invalid === true;
     });
     
-    return invalidInput;
+    return validInput;
   }
 
-
   // HANDLERS
+  handleClear = (e) => {
+    e.target.reset();
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
+    let isValid = await this.validateInput();
 
-    this.isValidInput();
-    
+    if (isValid === true) {
+
       let dataEntry = {
         id: Math.random().toString(10).slice(2),
         name: this.state.name,
         phoneNumber: this.state.phoneNumber,
       }
-      console.log(dataEntry);
   
       this.props.dataHandler && this.props.dataHandler(dataEntry);
-  
-      this.handleClear(e);
 
-      console.log("entries", {...this.validationObject})
-  };
+      this.setState({ submitStatus: "success"});
 
-  handleClear = (e) => {
-    e.target.reset();
+    } else {
+
+      this.setState({ submitStatus: "failure"});
+
+    }
+
+    this.handleClear(e);
   };
 
   render() {
@@ -122,7 +130,7 @@ class AddContact extends Component {
             <button type='submit'>Add Contact</button>
           </div>
         </form>
-        <Messages validationObject={this.validationObject} />
+        <Messages validationObject={this.validationObject} status={this.state.submitStatus} />
       </>
     )
   }
