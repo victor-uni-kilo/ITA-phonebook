@@ -1,18 +1,51 @@
-$clr-dark: #282c34;
-$clr-light: whitesmoke;
-$clr-gray: #bfcadb;
-;
+// COLORS
+$clr-primary: #050873;
+$clr-secondary: #5900ff;
+$clr-tertiary: #08D7CB;
 
+$clr-danger: #ee0e33;
+$clr-success: limegreen;
+
+$clr-dark: #060505;
+$clr-light: #f4f4f4;
+$clr-gray: #bfcadb;
+
+// SELECTOR-KEYS LISTS
+$size-list: ('xs','sm','md','lg','xl','xxl');
+
+// BREAKPOINTS
+$breakpoints: (
+  'xs': '200px',
+  'sm': '320px', 
+  'md': '701px', 
+  'lg': '1201px', 
+  'xl': '1441px', 
+  'xxl': '1801px' 
+);
+
+// SPACING
 $spacing-1: 0.25rem;
 $spacing-2: 0.5rem;
 $spacing-3: 0.75rem;
 $spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.50rem;
+$spacing-7: 1.75rem;
+$spacing-8: 2rem;
 
+// APP WIDTH
+$app-width:(
+  'xs': 90vw,
+  'sm': 90vw, 
+  'md': 80vw, 
+  'lg': 70vw, 
+  'xl': 65vw, 
+  'xxl': 60vw 
+);
 
-$border-radius: 6px;
+// FILLET
+$border-radius: $spacing-2;
+$border-radius-inner: $spacing-1;
 
-@mixin cardProps() {
-  background-color: $clr-dark;
-  color: $clr-light;
-  border-radius: $border-radius;
-}
+// INPUT HEIGHT
+$input-height: $spacing-8;

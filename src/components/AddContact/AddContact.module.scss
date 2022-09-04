@@ -1,29 +1,58 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .form{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
+  gap: $spacing-1;
   width: 100%;   
-  padding: 5px 0;
-  margin-bottom: $spacing-4;
+  padding: $spacing-4;
 
-  @include cardProps;
+  @include cardProps($clr-tertiary, $clr-secondary);
 
-  label {
-      flex-grow: 3;
-      margin: 0 $spacing-2;
-      input{
-          width: 100%;
-      }
+  label:nth-child(1) {
+    flex-grow: 1;
   }
+  label:nth-child(2) {
+    flex-grow: 1;
+  }
+  label:nth-child(3) {
+    flex-grow: 1;
+  }
+
   
-}
+  @include breakpoint('md'){
+    flex-wrap: nowrap;
 
-.btn-group {
-    flex-grow: 2;
+    label:nth-child(1) {
+      flex-grow: 1;
+      width: 40%;
+    }
+    label:nth-child(2) {
+      width: 10%;
+      min-width: 100px;
+    }
+    label:nth-child(3) {
+      flex-grow: 1;
+      width: 30%;
+    }
 
+    .btnGroup {
+      width: 20%;
+    }
+  }
+
+  .btnGroup {
+    display: flex;
+    gap: $spacing-1;
+    flex-grow: 1;
+    
     & > button {
-        font-weight: bold;
+      width: 50%;
+      font-weight: bold;
     }
 }
+}
+

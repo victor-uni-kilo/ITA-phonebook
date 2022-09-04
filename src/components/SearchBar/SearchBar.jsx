@@ -1,21 +1,17 @@
 import styles from './SearchBar.module.scss';
 
 
-class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keyword: null,
-    };
+const SearchBar = ({filterContacts}) => {
+
+  const handleOnChange = (e) => {
+    filterContacts && filterContacts(e.target.value);
   }
 
-  render() {
-    return (
-      <>
-        <input type="text" placeholder='search'/>
-      </>
-    )
-  }
+  return (
+    <div className={styles.searchBar}>
+      <input type="text" placeholder='SEARCH CONTACTS ...' onChange={handleOnChange}/>
+    </div>
+  )
 }
 
 export default SearchBar;

@@ -1,17 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
 @import './styles/resets.scss';
+@import './styles/variables.scss';
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Oswald', sans-serif;;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('../public/background-img.jpg');
-  background-size: cover;
+  background-blend-mode: lighten;
+  background-color:$clr-primary;
+  // background-image: url('../public/background-img.jpg');
+  // background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input, select {
+  width: 100%;
+  height: $input-height;
+  border: 1px solid $clr-dark;
+  border-radius: $border-radius-inner;
+  padding: $spacing-1;
+}
+
+input:focus{
+  outline: 2px solid $clr-dark;
+}
+
+button {
+  height: $input-height;
+  text-align: center;
+  border: 1px solid $clr-dark;
+  border-radius: $border-radius-inner;
+  cursor: pointer;
 }

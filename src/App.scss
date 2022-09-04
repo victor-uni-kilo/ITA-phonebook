@@ -1,21 +1,43 @@
+@use "sass:map";
 @import './styles/variables';
+@import './styles/mixins';
 
 .App {
-  margin: 4rem auto auto auto;
-  width: 60vw;
+  margin: $spacing-8 auto auto auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  font-size: calc(10px + 2vmin);
-  
+  @each $size in $size-list {
+    @include breakpoint($size) {
+      width: map.get($app-width, $size);
+    }
+  }
+
+  & > hr {
+    width: 100%;
+    border: 1px solid $clr-secondary;
+    margin-bottom: $spacing-4;
+  }
+
 }
 
 .App-header {
   width: 100%;
-  @include cardProps;
-  text-align: center;
+  @include cardProps($clr-tertiary, $clr-light);
   margin-bottom: $spacing-4;
+  color: $clr-primary;
+  h1 {
+    padding: $spacing-1 $spacing-4;
+  }
+  span {
+    color: $clr-secondary;
+  }
+  hr {
+    border: 1px solid $clr-primary;
+  }
+  
+ 
 }
 

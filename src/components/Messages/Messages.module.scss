@@ -1,10 +1,28 @@
-@import "../../styles/variables";
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
-.messageCard {
-    width: 100%;
-    
-    @include cardProps;
-    
-    background-color: red;
-    margin-bottom: $spacing-4;
+
+.messageCard { 
+  width: 100%;
+  margin: $spacing-4 0;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 1s ease-in;
+}
+
+.success, .danger {
+  max-height: 200px;
+}
+
+.success > span {
+  color: $clr-success;
+}
+
+.danger > ul > li{
+  color: $clr-danger;
+}
+
+@keyframes animateHeight {
+  from {height: 0%; overflow: hidden;}
+  to {height: 100%; overflow: hidden;}
 }

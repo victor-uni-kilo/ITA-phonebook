@@ -1,8 +1,10 @@
 import styles from './DisplayContacts.module.scss';
 
 
-const DisplayContacts = ({contactList, handleDelete}) => {
-  
+const DisplayContacts = ({filteredData, contactData, handleDelete}) => {
+
+  let contactList = filteredData || contactData;
+
     return (
       <>
         {contactList && 
@@ -10,7 +12,7 @@ const DisplayContacts = ({contactList, handleDelete}) => {
           return (
             <div key={`contactCard-${index}`} className={styles.contactCard}>
               <p>{item.name}</p>
-              <p>{item.phoneNumber}</p>
+              <p>{`+${item.phoneCode} ${item.phoneNumber}`}</p>
               <button onClick={() => handleDelete(item.id)}>
                 <img 
                   src="delete-icon.svg" 

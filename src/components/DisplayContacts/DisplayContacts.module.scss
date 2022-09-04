@@ -1,26 +1,33 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .contactCard {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	background-color: $clr-gray;
-	color: $clr-dark;
-	border-radius: $border-radius;
-	margin-bottom: $spacing-4;
 
-	& > p {
-		width: 45%;
-		padding: $spacing-2;
+  @include cardProps($clr-light, $clr-primary);
+
+	margin-bottom: $spacing-4;
+  padding: $spacing-2 $spacing-4;
+
+
+	& > p:nth-child(1) {
+		width: 40%;
+	}
+
+  & > p:nth-child(2) {
+    flex-grow: 1;
 	}
 
 	& > button {
-		height: 2rem;
-		padding: $spacing-2;
+		height:$input-height;
+    background: transparent;
+    border: none;
+    
 
 		& > img {
-      height: 100%;
+      height: 80%;
 		}
 	}
 }

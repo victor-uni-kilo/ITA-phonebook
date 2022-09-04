@@ -3,14 +3,16 @@ import AddContact from './components/AddContact/AddContact.jsx';
 import {useState} from 'react';
 import './App.scss';
 import DisplayContacts from './components/DisplayContacts/DisplayContacts.jsx';
+import SearchBar from './components/SearchBar/SearchBar.jsx';
 
 function App() {
 
   // INITATE DATA
   const [data, setData] = useState(JSON.parse(localStorage.getItem('PHONEBOOK_APP')));
-  
+  const [filteredData, setFilteredData] = useState(null);
+
   // HANDLERS
-  const dataHandler = async (data) => {
+  const handleData = async (data) => {
     let postData = [];
     let storageData = await JSON.parse(localStorage.getItem('PHONEBOOK_APP'));
     if (storageData) {
@@ -36,14 +38,22 @@ function App() {
     setData(filteredData);
   }
 
+  const handleFilter = (keyword) => {
+    setFilteredData(data.filter( contact => contact.name.includes(keyword)));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>myPhoneBook</h1>
+        <h1><span>simpl</span>PhoneBook</h1>
+        <hr />
+        <SearchBar filterContacts={handleFilter} />
       </header>
-      <AddContact dataHandler={dataHandler}/>
+      <AddContact dataHandler={handleData}/>
+      <hr />
       <DisplayContacts 
-        contactList={data} 
+        contactData={data}
+        filteredData={filteredData}
         handleDelete={handleDelete}
       />
     </div>

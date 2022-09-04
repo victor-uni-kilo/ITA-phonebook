@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use './variables.scss';
+
+@mixin breakpoint($size) {
+  @media (min-width: map.get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin cardProps($bckg-clr, $txt-clr) {
+  background-color: $bckg-clr;
+  color: $txt-clr;
+  border-radius: $border-radius;
+}
